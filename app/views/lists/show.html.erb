@@ -1,0 +1,19 @@
+<div class="banner-dyna d-flex justify-content-center align-items-center" style="background-image: url('<%= asset_path(@list.name.downcase + '.jpg') %>');">
+  <h2 class="text-white"><%= @list.name %></h2>
+</div>
+
+<ul>
+  <% @list.movies.each do |movie| %>
+  <li>
+    <%= movie.title %>
+    <%= movie.overview%>
+    <%= movie.rating %>
+
+    <% selected_bookmark = movie.bookmarks.select { |bookmark| bookmark.list == @list } %>
+    <%= selected_bookmark.first.comment %>
+
+    <%= link_to "Delete", list_bookmark_path(@list,selected_bookmark.first), data: {turbo_method: :delete, turbo_confirm: "are you sure ?"}%>
+  </li>
+  <% end %>
+</ul>
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
