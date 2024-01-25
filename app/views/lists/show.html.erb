@@ -1,5 +1,6 @@
-<div class="mb-3 banner-dyna d-flex justify-content-center align-items-center" style="background-image: url('<%= asset_path(@list.name.downcase + '.jpg') %>');">
-  <h2 class="text-white"><%= @list.name %></h2>
+<div class="mb-3 banner-dyna d-flex flex-column justify-content-center align-items-center" style="background-image: url('<%= asset_path(@list.name.downcase + '.jpg') %>');">
+  <h2 class="text-white fw-bolder fs-1"><%= @list.name %></h2>
+  <p class="btn btn-info fw-bold text-white justify-content-end"> <%= @list.movies.count %> movies</p>
 </div>
 
 <div class="container">
@@ -9,20 +10,23 @@
 
   <ul class="row list-unstyled justify-content-around">
     <% @list.movies.each do |movie| %>
-    <div class="movie-card p-0 mb-3" style="width: 28rem;">
+    <div class="movie-card p-0 mb-3 d-flex flex-column" style="width: 28rem;">
       <img class="card-img-top card-img" src=<%=movie.poster_url%> alt="Card image cap">
-      <div class="card-body p-3">
-        <li>
+      <div class="p-3 h-100 d-flex flex-column flex-grow-1">
+        <li class="h-100 d-flex flex-column">
           <div class="d-flex card-title">
-            <h5 class=""><%= movie.title %></h5>
-            <p class="ms-2">- <%= movie.rating %>/10 ⭐️</p>
+            <h5 class="fw-bolder fs-5"><%= movie.title %></h5>
+            <p class="ms-2 mb-0 text-secondary">• <%= movie.rating %>/10 ⭐️</p>
           </div>
-          <p class="card-text"><%= movie.overview%> </p>
+          <p class="card-text flex-grow-1"><%= movie.overview%> </p>
 
           <% selected_bookmark = movie.bookmarks.select { |bookmark| bookmark.list == @list } %>
-          <div class="d-flex justify-content-between">
-            <p><%= selected_bookmark.first.comment %></p>
-            <%= link_to "Delete", list_bookmark_path(@list,selected_bookmark.first),data: {turbo_method: :delete, turbo_confirm: "are you sure ?"}%>
+          <div class="d-flex justify-content-between mt-auto">
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-quote-left me-2"></i>
+              <p class="mb-0 card-bottom"><%= selected_bookmark.first.comment %></p>
+            </div>
+            <%= link_to "delete", list_bookmark_path(@list,selected_bookmark.first),data: {turbo_method: :delete, turbo_confirm: "are you sure ?"}, class: "text-danger card-bottom fw-bold text-decoration-none mb-0"%>
           </div>
 
         </li>

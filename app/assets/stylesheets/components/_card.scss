@@ -20,6 +20,15 @@
 .card-img {
   height: 200px;
   display: flex;
-  background-size: cover;
+  object-fit: cover;
   background-position: center center;
+}
+
+.card-text {
+  font-size: 14px;
+  color: rgb(120,120,120);
+}
+
+.card-bottom {
+  font-size: 14px
 }
