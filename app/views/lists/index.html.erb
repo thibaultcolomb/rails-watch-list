@@ -7,13 +7,15 @@
       <h3>My lists :</h3>
       <%= link_to "Create a movie list", new_list_path, class: "btn btn-success text-white"%>
     </div>
-    <ul class=" row list-unstyled justify-content-start flex-grow-1 mt-3 px-0", style="max-width: none;">
+    <ul class="row list-unstyled justify-content-start flex-grow-1 mt-3 px-0", style="max-width: none;">
      <% @lists.each do |list| %>
-       <li class="col-3 card mb-3 mx-3 p-0" >
-        <%= link_to list.name, list_path(list), class: "text-decoration-none" style="background-image: url('<%cl_image_path(list.photo.key)%>')"%>
+       <li class="col-3 card mb-3 mx-3 p-0" style="background-image: url('<%=cl_image_path list.photo.key %>')">
+        <%= link_to list.name, list_path(list), class: "text-decoration-none text-white"%>
        </li>
      <% end %>
     </ul>
   </div>
 
 </div>
+
+<%# style="background-image: url('<%cl_image_path(list.photo.key)')" %>
