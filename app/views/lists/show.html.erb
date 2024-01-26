@@ -9,9 +9,9 @@
     <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success text-white" %>
   </div>
 
-  <ul class="row list-unstyled justify-content-around">
+  <ul class="row list-unstyled justify-content-start">
     <% @list.movies.each do |movie| %>
-    <div class="movie-card p-0 mb-3 d-flex flex-column" style="width: 28rem;">
+    <div class="movie-card p-0 mx-3 mb-3 d-flex flex-column" style="width: 26rem;">
       <img class="card-img-top card-img" src=<%=movie.poster_url%> alt="Card image cap">
       <div class="p-3 h-100 d-flex flex-column flex-grow-1">
         <li class="h-100 d-flex flex-column">
