@@ -1,7 +1,10 @@
-<h1>Add a new list</h1>
+<div class="container w-25">
+  <h1>Add a new list</h1>
 
-<%= simple_form_for @list do |f|%>
-<%= f.input :name %>
-<%= f.input :photo, as: :file %>
-<%= f.submit "Add list" %>
-<% end %>
+  <%= simple_form_for @list do |f|%>
+  <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Add list", class: "btn btn-primary"%>
+  <% end %>
+
+</div>
