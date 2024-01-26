@@ -29,6 +29,9 @@ gem "jbuilder"
 # gem for security.
 gem "dotenv-rails"
 
+# Cloudinary : to store user photo
+gem "cloudinary"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
