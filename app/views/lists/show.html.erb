@@ -35,4 +35,25 @@
     </div>
     <% end %>
   </ul>
+  <div class="mt-5 border-top p-3 d-flex justify-content-between">
+    <div class="w-50">
+      <h3>Reviews: </h3>
+      <ul class="list-unstyled">
+        <% @list.reviews.each do |review| %>
+        <li class="border-bottom mt-2">
+          <p class="mb-0">
+            <%review.rating %>
+            <% review.rating.to_i.times do %>
+              ⭐️
+             <% end %>
+          </p>
+          <p><%= review.comment %></p>
+        </li>
+      <% end %>
+    </ul>
+    </div>
+    <div class="row h-25 justify-content-center">
+      <%= link_to "Add a review", new_list_review_path(@list), class: "btn btn-success text-white"%>
+    </div>
+  </div>
 </div>
